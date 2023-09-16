@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/11 20:52:18 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/16 20:16:30 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@
 # define DISPLAY_X		1000
 # define DISPLAY_Y		750
 
-# define NORTH			0
-# define SOUTH			180
-# define WEST			90
-# define EAST			270
+# define NORTH			270
+# define SOUTH			90
+# define WEST			180
+# define EAST			0
+
+# define VIEW_ANGLE		120
+# define STEP			0.2
 
 # define ANGLE			30
 
@@ -49,16 +52,21 @@
 #define KEY_D			2
 
 
+typedef	struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 typedef struct s_data
 {
 	char	**map;
 	int		display[DISPLAY_Y][DISPLAY_X];
-	int		pos_x;
-	int		pos_y;
+	double	direction;
+	double	pos_x;
+	double	pos_y;
 	int		max_x;
 	int		max_y;
-	int		direction;
 	char	**path;
 	void	*img;
 	void	*north_img;

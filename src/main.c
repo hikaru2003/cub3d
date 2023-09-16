@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/14 15:11:54 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/16 15:03:16 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_data(t_data *data)
 	}
 	printf("player_x: %d\n", data->pos_x);
 	printf("player_y: %d\n", data->pos_y);
-	printf("player_dir: %d\n", data->direction);
+	printf("player_dir: %f\n", data->direction);
 }
 
 int	main(int argc, char **argv)

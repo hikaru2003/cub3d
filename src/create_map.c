@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/14 15:08:00 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/16 20:16:43 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	create_map(t_data *data, char *filename)
 			{
 				if (data->direction != -1)
 					print_error("duplicate player position");
-				data->pos_x = i;
-				data->pos_y = j;
+				data->pos_x = i + 0.5;
+				data->pos_y = j + 0.5;
 				if (line[i] == 'N')
 					data->direction = NORTH;
 				else if (line[i] == 'S')
