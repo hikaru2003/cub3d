@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/16 20:16:30 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/18 21:54:11 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <libc.h>
 # include <mlx.h>
 # include <math.h>
+
+#include <stdio.h>
+#include <time.h>
 
 # define KEY_ESC		65307
 
@@ -69,6 +72,9 @@ typedef struct s_data
 	int		max_y;
 	char	**path;
 	void	*img;
+	int		xpm_width;
+	int		xpm_height;
+	void	*direction_img[4];
 	void	*north_img;
 	void	*south_img;
 	void	*west_img;

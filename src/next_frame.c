@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/18 19:22:45 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:54:55 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,33 @@
 
 void	go_straight(t_data *data)
 {
-	if (data->map[(int)data->pos_y - 1][(int)data->pos_x] == '0')
+	// printf("go straight\n");
+	// printf("x=%f -> %d, y=%f -> %d\n", data->pos_x, (int)data->pos_x, data->pos_y - STEP, (int)(data->pos_y - STEP));
+	if (data->map[(int)(data->pos_y - STEP)][(int)data->pos_x] != '1')
 		data->pos_y -= STEP;
 }
 
 void	go_back(t_data *data)
 {
-	if (data->map[(int)data->pos_y + 1][(int)data->pos_x] == '0')
+	// printf("go back\n");
+	// printf("x=%f -> %d, y=%f -> %d\n", data->pos_x, (int)data->pos_x, data->pos_y + STEP, (int)(data->pos_y + STEP));
+	if (data->map[(int)(data->pos_y + STEP)][(int)data->pos_x] != '1')
 		data->pos_y += STEP;
 }
 
 void	go_left(t_data *data)
 {
-	if (data->map[(int)data->pos_y][(int)data->pos_x - 1] == '0')
+	// printf("go left\n");
+	// printf("x=%f -> %d, y=%f -> %d\n", data->pos_x - STEP, (int)(data->pos_x - STEP), data->pos_y, (int)(data->pos_y));
+	if (data->map[(int)data->pos_y][(int)(data->pos_x - STEP)] != '1')
 		data->pos_x -= STEP;
 }
 
 void	go_right(t_data *data)
 {
-	if (data->map[(int)data->pos_y][(int)data->pos_x + 1] == '0')
+	// printf("go right\n");
+	// printf("x=%f -> %d, y=%f -> %d\n", data->pos_x + STEP, (int)(data->pos_x + STEP), data->pos_y, (int)(data->pos_y));
+	if (data->map[(int)data->pos_y][(int)(data->pos_x + STEP)] != '1')
 		data->pos_x += STEP;
 }
 
@@ -76,7 +84,7 @@ void	culc_distance(t_data *data, double angle)
 	y_intercept = data->pos_y + dy + dx / tan(angle * M_PI / 180);
 }
 
-void	update_display(t_data *data)
+void	update_display(t_data *data, int index)
 {
 	// double	shift_angle;
 	// double	start_angle;
@@ -94,13 +102,43 @@ void	update_display(t_data *data)
 
 
 	// after calculate distance, (x, y) position, direction->壁が東西南北どれかわかる
-	int	x = data->xpm_width * (data->pos_x - (int)data->pos_x);
-	int	y = data->xpm_height * (data->pos_y - (int)data->pos_y);
-	int	pos = (y * data->line_length + x * (data->bits_per_pixel / 8));
+	// int	x = data->xpm_width * (data->pos_x - (int)data->pos_x);
+	// int	y = data->xpm_height * (data->pos_y - (int)data->pos_y);
+	// int	pos = (y * data->line_length + x * (data->bits_per_pixel / 8));
+	// char	*mlx_data_addr = mlx_get_data_addr(data->north_img, &data->bits_per_pixel, &data->line_length, &data->endian);
+
+
+	int	i = 0;
+	int	j = 0;
+	int	x = 0;
+	int	y = 0;
+	int	pos = 0;
+	char	*mlx_data_addr;
+	while (j < DISPLAY_Y)
+	{
+		i = 0;
+		x = 0;
+		while (i < DISPLAY_X)
+		{
+			pos = (y * data->line_length + x * (data->bits_per_pixel / 8));
+			// 壁はランダムに表示
+			mlx_data_addr = mlx_get_data_addr(data->direction_img[index], &data->bits_per_pixel, &data->line_length, &data->endian);
+			data->display[j][i] = *(unsigned int *)(mlx_data_addr + pos);
+			i++;
+			x++;
+			if (x == data->xpm_width)
+				x = 0;
+		}
+		j++;
+		y++;
+		if (y == data->xpm_height)
+			y = 0;
+	}
 }
 
 int	next_frame(int keycode, t_data *data)
 {
+	// printf("before> pos_x: %f, pos_y: %f\n", data->pos_x, data->pos_y);
 	if (keycode == ESC)
 	{
 		// ft_destroy(data)と同じ内容？
@@ -126,6 +164,7 @@ int	next_frame(int keycode, t_data *data)
 	// turn right
 	if (keycode == RIGHT_ARROW)
 		data->direction += ANGLE;
-	// update_display(data);
+	// printf("after> pos_x: %f, pos_y: %f\n", data->pos_x, data->pos_y);
+	update_display(data, rand() % 4);
 	return (0);
 }

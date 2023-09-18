@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:10:25 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/18 19:24:02 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:45:40 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	check_path(char *line, int index, t_data *data, void *img)
 	if (ft_strchr(line, '\n'))
 		line[ft_strchr(line, '\n') - line] = '\0';
 	data->path[index] = ft_strdup(&line[i]);
-	img = mlx_xpm_file_to_image(data->mlx, data->path[index],
+	data->direction_img[index] = mlx_xpm_file_to_image(data->mlx, data->path[index],
 			&(data->xpm_width), &(data->xpm_height));
-	if (!img)
+	if (!data->direction_img[index])
 		print_error("cannot open xpm file");
 }
 
@@ -82,13 +82,13 @@ void	check_elements(int fd, t_data *data)
 		if (!line)
 			print_error("element is missing");
 		if (i == 0 && line[0] == 'N' && line[1] == 'O')
-			check_path(&line[2], i, data, data->north_img);
+			check_path(&line[2], i, data, &data->north_img);
 		else if (i == 1 && line[0] == 'S' && line[1] == 'O')
-			check_path(&line[2], i, data, data->south_img);
+			check_path(&line[2], i, data, &data->south_img);
 		else if (i == 2 && line[0] == 'W' && line[1] == 'E')
-			check_path(&line[2], i, data, data->west_img);
+			check_path(&line[2], i, data, &data->west_img);
 		else if (i == 3 && line[0] == 'E' && line[1] == 'A')
-			check_path(&line[2], i, data, data->east_img);
+			check_path(&line[2], i, data, &data->east_img);
 		else if ((i == 4 || i == 7) && line[0] == '\n')
 			;
 		else if (i == 5 && line[0] == 'F')

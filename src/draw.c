@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:17:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/11 20:23:12 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/18 21:51:43 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	draw_one_pixel(t_data *data, int x, int y)
 	// else
 	// 	my_mlx_pixel_put(data, x, y, data->floor_rgb);
 	my_mlx_pixel_put(data, x, y, data->display[y][x]);
+
 }
 
 int	draw_map(t_data *data)
@@ -36,6 +37,7 @@ int	draw_map(t_data *data)
 
 	x = 0;
 	y = 0;
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 	while (y < DISPLAY_Y)
 	{
 		x = 0;
