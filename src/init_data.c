@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:29:02 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/16 20:16:52 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/18 19:23:13 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_data	*init_data(void)
 	data->max_y = 0;
 	data->pos_x = 0;
 	data->pos_y = 0;
+	data->xpm_width = 0;
+	data->xpm_height = 0;
 	data->path = (char **)malloc(sizeof(char *) * 4);
 	if (!data->path)
 		print_error("bad_alloc");

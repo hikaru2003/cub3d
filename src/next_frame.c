@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/16 18:35:07 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/18 19:22:45 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,25 @@ void	culc_distance(t_data *data, double angle)
 
 void	update_display(t_data *data)
 {
-	double	shift_angle;
-	double	start_angle;
-	double	end_angle;
+	// double	shift_angle;
+	// double	start_angle;
+	// double	end_angle;
 
-	shift_angle = (double)VIEW_ANGLE / DISPLAY_X;
-	start_angle = data->direction - (double)VIEW_ANGLE / 2;
-	end_angle = data->direction + (double)VIEW_ANGLE / 2;
-	while (start_angle <= end_angle)
-	{
-		culc_distance(data, start_angle);
-		start_angle += shift_angle;
-	}
+	// shift_angle = (double)VIEW_ANGLE / DISPLAY_X;
+	// start_angle = data->direction - (double)VIEW_ANGLE / 2;
+	// end_angle = data->direction + (double)VIEW_ANGLE / 2;
+	// while (start_angle <= end_angle)
+	// {
+	// 	culc_distance(data, start_angle);
+	// 	start_angle += shift_angle;
+	// }
+
+
+
+	// after calculate distance, (x, y) position, direction->壁が東西南北どれかわかる
+	int	x = data->xpm_width * (data->pos_x - (int)data->pos_x);
+	int	y = data->xpm_height * (data->pos_y - (int)data->pos_y);
+	int	pos = (y * data->line_length + x * (data->bits_per_pixel / 8));
 }
 
 int	next_frame(int keycode, t_data *data)
