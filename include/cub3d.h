@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/18 21:54:11 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/19 17:49:10 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define STDERR			2
 
 # define DISPLAY_X		1000
-# define DISPLAY_Y		750
+# define DISPLAY_Y		600
 
 # define NORTH			270
 # define SOUTH			90
@@ -95,7 +95,7 @@ typedef struct s_data
 void	check_file(char *filename, t_data *data);
 
 // check_map.c
-
+void	check_map(t_data *data);
 
 // create_map.c
 void	create_map(t_data *data, char *filename);
@@ -130,6 +130,8 @@ char	*ft_strjoin(char *line, char *buf);
 t_data	*init_data(void);
 
 // next_frame.c
+void	reset_display(t_data *data);
+void	update_display(t_data *data, int index);
 int		next_frame(int keycode, t_data *data);
 
 

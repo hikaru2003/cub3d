@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:17:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/18 21:51:43 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/19 18:03:15 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	draw_one_pixel(t_data *data, int x, int y)
-{
-	// if (y < DISPLAY_Y / 2)
-	// 	my_mlx_pixel_put(data, x, y, data->ceiling_rgb);
-	// else
-	// 	my_mlx_pixel_put(data, x, y, data->floor_rgb);
-	my_mlx_pixel_put(data, x, y, data->display[y][x]);
+// void	draw_one_pixel(t_data *data, int x, int y)
+// {
+// 	// if (y < DISPLAY_Y / 2)
+// 	// 	my_mlx_pixel_put(data, x, y, data->ceiling_rgb);
+// 	// else
+// 	// 	my_mlx_pixel_put(data, x, y, data->floor_rgb);
+// 	my_mlx_pixel_put(data, x, y, data->display[y][x]);
 
-}
+// }
 
 int	draw_map(t_data *data)
 {
@@ -43,7 +43,7 @@ int	draw_map(t_data *data)
 		x = 0;
 		while (x < DISPLAY_X)
 		{
-			draw_one_pixel(data, x, y);
+			my_mlx_pixel_put(data, x, y, data->display[y][x]);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/18 21:50:32 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/19 17:15:17 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ int	main(int argc, char **argv)
 	data->mlx = mlx_init();
 	check_file(argv[1], data);
 	create_map(data, argv[1]);
-	print_data(data);
-	// check_map(data);
+	check_map(data);
+	reset_display(data);
+	update_display(data, rand() % 4);
+	// print_data(data);
 	data->win = mlx_new_window(data->mlx, DISPLAY_X, DISPLAY_Y, "cub3d");
 	data->img = mlx_new_image(data->mlx, DISPLAY_X, DISPLAY_X);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
@@ -49,7 +51,6 @@ int	main(int argc, char **argv)
 	mlx_hook(data->win, 2, 1, next_frame, data);
 	mlx_hook(data->win, 17, 1, ft_destroy, data);
 	mlx_loop_hook(data->mlx, draw_map, data);
-	// mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_loop(data->mlx);
 	return (0);
 }
