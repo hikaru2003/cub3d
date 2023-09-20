@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/20 15:29:38 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:34:34 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	print_data(t_data *data)
 {
 	printf("max_x: %d\n", data->max_x);
 	printf("max_y: %d\n", data->max_y);
-	printf("map:\n");
-	for (int i = 0; i < data->max_y; i++)
-	{
-		printf("%s\n", data->map[i]);
-	}
+	// printf("map:\n");
+	// for (int i = 0; i < data->max_y; i++)
+	// {
+	// 	printf("%s\n", data->map[i]);
+	// }
 	printf("player_x: %f\n", data->pos_x);
 	printf("player_y: %f\n", data->pos_y);
 	printf("player_dir: %f\n", data->direction);
