@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/19 17:15:17 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:29:38 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	print_data(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	*data;
+
 	if (argc != 2)
 		print_error("please input a map");
 	data = init_data();

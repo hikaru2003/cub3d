@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/16 20:16:43 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:25:03 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_map(t_data *data)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -53,6 +53,25 @@ void	skip_elements(t_data *data, int fd)
 	}
 }
 
+void	check_direction(t_data *data, char c, int x, int y)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+	{
+		if (data->direction != -1)
+			print_error("duplicate player position");
+		data->pos_x = x + 0.5;
+		data->pos_y = y + 0.5;
+		if (c == 'N')
+			data->direction = NORTH;
+		else if (c == 'S')
+			data->direction = SOUTH;
+		else if (c == 'E')
+			data->direction = EAST;
+		else if (c == 'W')
+			data->direction = WEST;
+	}
+}
+
 void	create_map(t_data *data, char *filename)
 {
 	int		fd;
@@ -71,21 +90,7 @@ void	create_map(t_data *data, char *filename)
 		i = 0;
 		while (line[i] != '\n' && line[i] != '\0')
 		{
-			if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-			{
-				if (data->direction != -1)
-					print_error("duplicate player position");
-				data->pos_x = i + 0.5;
-				data->pos_y = j + 0.5;
-				if (line[i] == 'N')
-					data->direction = NORTH;
-				else if (line[i] == 'S')
-					data->direction = SOUTH;
-				else if (line[i] == 'E')
-					data->direction = EAST;
-				else if (line[i] == 'W')
-					data->direction = WEST;
-			}
+			check_direction(data, line[i], i, j);
 			data->map[j][i] = line[i];
 			i++;
 		}

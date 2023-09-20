@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:17:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/19 18:03:15 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:27:13 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	draw_map(t_data *data)
 
 	x = 0;
 	y = 0;
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
 	while (y < DISPLAY_Y)
 	{
 		x = 0;

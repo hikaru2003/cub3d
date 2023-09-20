@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:10:25 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/18 21:45:40 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/20 15:12:45 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	check_path(char *line, int index, t_data *data, void *img)
 	if (ft_strchr(line, '\n'))
 		line[ft_strchr(line, '\n') - line] = '\0';
 	data->path[index] = ft_strdup(&line[i]);
-	data->direction_img[index] = mlx_xpm_file_to_image(data->mlx, data->path[index],
-			&(data->xpm_width), &(data->xpm_height));
+	data->direction_img[index] = mlx_xpm_file_to_image(data->mlx,
+			data->path[index], &(data->xpm_width), &(data->xpm_height));
 	if (!data->direction_img[index])
 		print_error("cannot open xpm file");
 }
@@ -109,15 +109,12 @@ void	check_map_elements(char *line, int line_len)
 	i = 0;
 	while (i < line_len)
 	{
-		if (line[i] == '1' || line[i] == '0' || line[i] == ' ' ||
-			line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+		if (line[i] == '1' || line[i] == '0' || line[i] == ' '
+			|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
+			|| line[i] == 'W')
 			i++;
 		else
-		{
-			printf("line len = %d\n", line_len);
-			printf("%s", line);
 			print_error("map element is incorrect");
-		}
 	}	
 }
 
