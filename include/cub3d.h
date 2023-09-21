@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/19 17:49:10 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/21 12:29:24 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void	check_map(t_data *data);
 void	create_map(t_data *data, char *filename);
 
 // destroy.c
+void	free_map(t_data *data);
+void	free_path(t_data *data);
 int		ft_destroy(t_data *data);
 
 // draw.c
