@@ -1,46 +1,58 @@
 NAME = cub3d
 
-SRCS	=	src/check_file.c	\
-			src/check_map.c	\
-			src/create_map.c	\
-			src/destroy.c		\
-			src/draw.c			\
-			src/error.c			\
-			src/ft_atoi.c		\
-			src/ft_split.c		\
-			src/ft_strchr.c		\
-			src/ft_strcmp.c		\
-			src/ft_strdup.c		\
-			src/ft_strlcpy.c	\
-			src/ft_strlen.c		\
-			src/ft_substr.c		\
-			src/get_next_line_utils.c	\
-			src/get_next_line.c	\
-			src/init_data.c		\
-			src/main.c			\
-			src/next_frame.c	\
+SRCS	=	check_file.c	\
+			check_map.c	\
+			create_map.c	\
+			destroy.c		\
+			draw.c			\
+			error.c			\
+			get_next_line_utils.c	\
+			get_next_line.c	\
+			init_data.c		\
+			main.c			\
+			next_frame.c	\
 
+INCLUDE_DIR = ./include
+SRCDIR = ./srcs/
+OBJDIR = ./obj/
 
-OBJS = $(SRCS:%.c=%.o)
+MLX_DIR = ./mlx/
 
-CC = cc
+LIBFT_DIR = ./libft/
+LIBFT_A = $(LIBFT_DIR)libft.a
+
+OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
+
+CC = gcc
+
 # CFLAGS = -Wall -Wextra -Werror -I include
 CFLAGS = -I include
 
-all: $(NAME)
+MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+all: $(LIBFT_A) $(OBJDIR) $(NAME)
+
+$(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
+	make -C $(MLX_DIR)
+	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS) #-fsanitize=address -g
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)%.o: $(SRCDIR)%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(LIBFT_A):
+	make -C $(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJS) $(M_OBJS) $(B_OBJS)
+	make clean -C $(MLX_DIR)
+	make fclean -C $(LIBFT_DIR)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
 
-bonus:	$(OBJS) $(B_OBJS)
-	make WITH_BONUS=1
-
 re: fclean all
 
-.PHONY: all clean fclean bonus re
+.PHONY: all clean fclean re
