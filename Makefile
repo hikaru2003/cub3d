@@ -26,7 +26,7 @@ OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 CC = gcc
 
 # CFLAGS = -Wall -Wextra -Werror -I include
-CFLAGS = -I include
+CFLAGS = -I include #-g -fsanitize=address
 
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 
@@ -34,8 +34,7 @@ all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
 	make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS) #-fsanitize=address -g
-
+	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 

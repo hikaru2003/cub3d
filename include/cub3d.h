@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/21 18:31:30 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/21 22:05:06 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	print_error(char *msg);
 
 // gnl
 char	*get_next_line(int fd);
+char	*gnl_strjoin(char *line, char *buf);
 char	*ft_free(char **str);
 
 // init_data.c

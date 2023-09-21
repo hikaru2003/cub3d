@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:44:55 by hmorisak          #+#    #+#             */
-/*   Updated: 2022/10/12 15:21:09 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/21 19:24:07 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,3 @@ char	*ft_strdup(const char *s1)
 	tmp[i] = '\0';
 	return (tmp);
 }
-
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	const char s1[] = "helloworld";
-// 	printf("%s\n", ft_strdup(s1));
-
-// 	return (0);
-// }

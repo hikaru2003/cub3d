@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 17:10:25 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/20 15:12:45 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/21 21:58:19 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	check_path(char *line, int index, t_data *data, void *img)
 	if (ft_strchr(line, '\n'))
 		line[ft_strchr(line, '\n') - line] = '\0';
 	data->path[index] = ft_strdup(&line[i]);
+	if (!data->path[index])
+		print_error("bad_alloc");
 	data->direction_img[index] = mlx_xpm_file_to_image(data->mlx,
 			data->path[index], &(data->xpm_width), &(data->xpm_height));
 	if (!data->direction_img[index])

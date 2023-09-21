@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:15:52 by hmorisak          #+#    #+#             */
-/*   Updated: 2023/09/10 18:38:16 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/21 22:04:40 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*do_it(char *line, char	**save, int fd)
 
 	line[0] = '\0';
 	if (*save && **save)
-		line = ft_strjoin(line, *save);
+		line = gnl_strjoin(line, *save);
 	ret = 1;
 	while (ret > 0 && !ft_strchr(line, '\n'))
 	{
@@ -28,7 +28,7 @@ static char	*do_it(char *line, char	**save, int fd)
 			return (ft_free(&line));
 		ret = read(fd, buf, BUFFER_SIZE);
 		buf[ret] = '\0';
-		line = ft_strjoin(line, buf);
+		line = gnl_strjoin(line, buf);
 		ft_free(&buf);
 	}
 	if (*save != NULL)
@@ -59,7 +59,7 @@ char	*get_next_line(int fd)
 		if (!save)
 			return (ft_free(&line));
 		save[0] = '\0';
-		save = ft_strjoin(save, pt);
+		save = gnl_strjoin(save, pt);
 		*pt = '\0';
 	}
 	return (line);

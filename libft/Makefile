@@ -48,7 +48,7 @@ SRCS	=	ft_isalpha.c		\
 OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 OBJDIR = ./obj/
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 all: $(OBJDIR) $(NAME)
 
