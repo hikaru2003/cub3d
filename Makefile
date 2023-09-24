@@ -3,6 +3,7 @@ NAME = cub3d
 SRCS	=	check_file.c	\
 			check_map.c	\
 			create_map.c	\
+			culc_distance.c	\
 			destroy.c		\
 			draw.c			\
 			error.c			\

@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/21 22:05:06 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/24 19:21:44 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,16 @@ typedef struct s_data
 	int		endian;
 } t_data;
 
+typedef struct s_status
+{
+	double	init_x;
+	double	init_y;
+	double	distance;
+	int		dir;
+	double	pos;
+	double	angle;
+} t_status;
+
 
 
 // check_file.c
@@ -91,7 +101,10 @@ void	check_file(char *filename, t_data *data);
 void	check_map(t_data *data);
 
 // create_map.c
-void	create_map(t_data *data, char *filename);
+void	create_map(char *filename, t_data *data);
+
+// culc_distance.c
+void	culc_distance(t_data *data);
 
 // destroy.c
 void	free_map(t_data *data);
@@ -114,7 +127,7 @@ t_data	*init_data(void);
 
 // next_frame.c
 void	reset_display(t_data *data);
-void	update_display(t_data *data, int index);
+void	update_display(t_data *data, int index, t_status status);
 int		next_frame(int keycode, t_data *data);
 
 

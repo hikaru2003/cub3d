@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/21 22:10:38 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/24 19:23:22 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	main(int argc, char **argv)
 	data = init_data();
 	data->mlx = mlx_init();
 	check_file(argv[1], data);
-	create_map(data, argv[1]);
+	create_map(argv[1], data);
 	check_map(data);
 	reset_display(data);
-	update_display(data, rand() % 4);
+	culc_distance(data);
 	// print_data(data);
 	data->win = mlx_new_window(data->mlx, DISPLAY_X, DISPLAY_Y, "cub3d");
 	data->img = mlx_new_image(data->mlx, DISPLAY_X, DISPLAY_X);

@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/21 22:07:44 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/22 15:55:31 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,8 @@ void	init_map(t_data *data)
 		data->map[j] = (char *)malloc(sizeof(char) * (data->max_x + 1));
 		if (!data->map[j])
 			print_error("bad_alloc");
-		i = 0;
-		while (i < data->max_x)
-		{
-			data->map[j][i] = ' ';
-			i++;
-		}
-		data->map[j][i] = '\0';
+		data->map[j] = ft_memset(data->map[j], ' ', (size_t)data->max_x);
+		data->map[j][data->max_x] = '\0';
 		j++;
 	}
 	data->map[j] = NULL;
@@ -72,7 +67,7 @@ void	check_direction(t_data *data, char c, int x, int y)
 	}
 }
 
-void	create_map(t_data *data, char *filename)
+void	create_map(char *filename, t_data *data)
 {
 	int		fd;
 	int		i;
