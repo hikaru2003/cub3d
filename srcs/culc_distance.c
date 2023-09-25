@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by akazuki           #+#    #+#             */
-/*   Updated: 2023/09/25 13:37:38 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/25 16:01:31 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,33 +225,33 @@ t_status	choice_distance(t_status x_axis, t_status y_axis, double angle)
 {
 	if (x_axis.distance == -1)
 	{
-		y_axis.dir = 2;
+		y_axis.dir = WEST_IMG;
 		if (90 < angle && angle < 270)
-			y_axis.dir = 3;
+			y_axis.dir = EAST_IMG;
 		y_axis.pos = y_axis.init_y - (int)y_axis.init_y;
 		return (y_axis);
 	}
 	if (y_axis.distance == -1)
 	{
-		x_axis.dir = 1;
+		x_axis.dir = SOUTH_IMG;
 		if (angle < 180)
-			x_axis.dir = 0;
+			x_axis.dir = NORTH_IMG;
 		x_axis.pos = x_axis.init_x - (int)x_axis.init_x;
 		return (x_axis);
 	}
 	if (x_axis.distance > y_axis.distance)
 	{
-		y_axis.dir = 2;
+		y_axis.dir = WEST_IMG;
 		if (90 < angle && angle < 270)
-			y_axis.dir = 3;
+			y_axis.dir = EAST_IMG;
 		y_axis.pos = y_axis.init_y - (int)y_axis.init_y;
 		return (y_axis);
 	}
 	else
 	{
-		x_axis.dir = 1;
+		x_axis.dir = SOUTH_IMG;
 		if (angle < 180)
-			x_axis.dir = 0;
+			x_axis.dir = NORTH_IMG;
 		x_axis.pos = x_axis.init_x - (int)x_axis.init_x;
 		return (x_axis);
 	}
@@ -267,18 +267,18 @@ void	step_position(t_data *data, double angle, int x)
 	{
 		intersection_y_axis = multiple_parallel_intersection(data, angle);
 		result_data = intersection_y_axis;
-		result_data.dir = 3;
+		result_data.dir = EAST_IMG;
 		if (angle == (double)0)
-			result_data.dir = 2;
+			result_data.dir = WEST_IMG;
 		result_data.pos = result_data.init_y - (int)result_data.init_y;
 	}
 	else if (angle == (double)90 || angle == (double)270)
 	{
 		intersection_x_axis = multiple_vertical_intersection(data, angle);
 		result_data = intersection_x_axis;
-		result_data.dir = 1;
+		result_data.dir = SOUTH_IMG;
 		if (angle == ((double)90))
-			result_data.dir = 0;
+			result_data.dir = NORTH_IMG;
 		result_data.pos = result_data.init_x - (int)result_data.init_x;
 	}
 	else
@@ -290,7 +290,7 @@ void	step_position(t_data *data, double angle, int x)
 	result_data.angle = angle;
 	// printf("x ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_x_axis.angle, intersection_x_axis.init_x, intersection_x_axis.init_y, intersection_x_axis.distance, intersection_x_axis.dir);
 	// printf("y ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_y_axis.angle, intersection_y_axis.init_x, intersection_y_axis.init_y, intersection_y_axis.distance, intersection_y_axis.dir);
-	printf("angle %f data (%f, %f) distance %f, dir %d\n", result_data.angle, result_data.init_x, result_data.init_y, result_data.distance, result_data.dir);
+	// printf("angle %f data (%f, %f) distance %f, dir %d\n", result_data.angle, result_data.init_x, result_data.init_y, result_data.distance, result_data.dir);
 	update_display(data, x, result_data);
 }
 

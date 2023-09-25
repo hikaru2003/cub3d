@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/25 13:16:51 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:02:25 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	update_display(t_data *data, int index, t_status status)
 	{
 		pos = (y * data->line_length + x * (data->bits_per_pixel / 8));
 		mlx_data_addr = mlx_get_data_addr(data->direction_img[status.dir], &data->bits_per_pixel, &data->line_length, &data->endian);
-		if (0 <= j && j < DISPLAY_X)
+		if (0 <= j && j < DISPLAY_Y)
 			data->display[j][index] = *(unsigned int *)(mlx_data_addr + pos);
 		j++;
 		count++;

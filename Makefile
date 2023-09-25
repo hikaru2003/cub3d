@@ -34,7 +34,7 @@ MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
-	make -C $(MLX_DIR)
+	# make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -46,7 +46,7 @@ $(LIBFT_A):
 	make -C $(LIBFT_DIR)
 
 clean:
-	make clean -C $(MLX_DIR)
+	# make clean -C $(MLX_DIR)
 	make fclean -C $(LIBFT_DIR)
 	rm -rf $(OBJDIR)
 

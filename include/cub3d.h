@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/25 13:13:41 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:05:55 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,19 @@
 
 # define DISPLAY_X		1000
 # define DISPLAY_Y		600
-# define MIN_WALL_HEIGHT	200
-# define MAX_WALL_HEIGHT	400
+# define MIN_WALL_HEIGHT	500
+# define MAX_WALL_HEIGHT	700
 
 # define NORTH			270
 # define SOUTH			90
 # define WEST			180
 # define EAST			0
+
+# define NORTH_IMG		0
+# define SOUTH_IMG		1
+# define WEST_IMG		2
+# define EAST_IMG		3
+
 
 # define VIEW_ANGLE		120
 # define STEP			0.2
