@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/25 15:05:55 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/25 20:18:36 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 
 
 # define VIEW_ANGLE		120
+# define VIEW_ANGLE_Y	90
 # define STEP			0.2
 
 # define ANGLE			30
@@ -98,6 +99,7 @@ typedef struct s_status
 	int		dir;
 	double	pos;
 	double	angle;
+	double	height_ratio;
 } t_status;
 
 
