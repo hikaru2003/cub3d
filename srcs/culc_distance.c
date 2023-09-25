@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by akazuki           #+#    #+#             */
-/*   Updated: 2023/09/25 13:34:16 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:37:38 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,8 +288,8 @@ void	step_position(t_data *data, double angle, int x)
 		result_data = choice_distance(intersection_x_axis, intersection_y_axis, angle);
 	}
 	result_data.angle = angle;
-	printf("x ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_x_axis.angle, intersection_x_axis.init_x, intersection_x_axis.init_y, intersection_x_axis.distance, intersection_x_axis.dir);
-	printf("y ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_y_axis.angle, intersection_y_axis.init_x, intersection_y_axis.init_y, intersection_y_axis.distance, intersection_y_axis.dir);
+	// printf("x ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_x_axis.angle, intersection_x_axis.init_x, intersection_x_axis.init_y, intersection_x_axis.distance, intersection_x_axis.dir);
+	// printf("y ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_y_axis.angle, intersection_y_axis.init_x, intersection_y_axis.init_y, intersection_y_axis.distance, intersection_y_axis.dir);
 	printf("angle %f data (%f, %f) distance %f, dir %d\n", result_data.angle, result_data.init_x, result_data.init_y, result_data.distance, result_data.dir);
 	update_display(data, x, result_data);
 }
