@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/24 20:16:20 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/25 13:16:51 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	update_display(t_data *data, int index, t_status status)
 	int	pos = 0;
 	char	*mlx_data_addr;
 	int	half_y = DISPLAY_Y / 2;
-	int height = (int)DISPLAY_Y * (data->max_y - status.distance) / (data->max_y);
+	int height = (int)MAX_WALL_HEIGHT - MIN_WALL_HEIGHT * status.distance / data->max_y;
 	int	count = 0;
 	int		current_pixel = 0;
 	float	next_pixel = 0;
