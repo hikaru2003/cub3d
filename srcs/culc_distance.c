@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   culc_distance.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by akazuki           #+#    #+#             */
-/*   Updated: 2023/09/27 19:35:56 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/27 21:54:21 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,6 +292,8 @@ void	step_position(t_data *data, double angle, int x)
 	// printf("y ->angle %f data (%f, %f) distance %f, dir %d\n", intersection_y_axis.angle, intersection_y_axis.init_x, intersection_y_axis.init_y, intersection_y_axis.distance, intersection_y_axis.dir);
 	// printf("angle %f data (%f, %f) distance %f, dir %d\n", result_data.angle, result_data.init_x, result_data.init_y, result_data.distance, result_data.dir);
 	result_data.height_ratio = atan(0.5 / result_data.distance) / M_PI * 180 / (double)VIEW_ANGLE_Y * (double) 2;
+	result_data.height	= (int)DISPLAY_HALF * result_data.height_ratio;
+	result_data.height_per_pixel = (float)result_data.height / (float)(data->xpm_height / 2);
 	// printf("angle %f %f\n", angle, result_data.height_ratio);
 	
 	update_display(data, x, result_data);

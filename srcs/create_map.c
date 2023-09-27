@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/25 13:09:15 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/27 19:56:53 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,14 @@ void	check_direction(t_data *data, char c, int x, int y)
 	}
 }
 
-void	create_map(char *filename, t_data *data)
+void	get_map(int fd, t_data *data)
 {
-	int		fd;
 	int		i;
 	int		j;
 	char	*line;
 
-	fd = open(filename, O_RDONLY);
 	i = 0;
 	j = 0;
-	init_map(data);
-	skip_elements(data, fd);
 	while (j < data->max_y)
 	{
 		line = get_next_line(fd);
@@ -94,5 +90,15 @@ void	create_map(char *filename, t_data *data)
 		free(line);
 		j++;
 	}
+}
+
+void	create_map(char *filename, t_data *data)
+{
+	int		fd;
+
+	fd = open(filename, O_RDONLY);
+	init_map(data);
+	skip_elements(data, fd);
+	get_map(fd, data);
 	close (fd);
 }

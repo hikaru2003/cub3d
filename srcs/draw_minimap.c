@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:36:12 by hmorisak          #+#    #+#             */
-/*   Updated: 2023/09/27 19:36:25 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/27 20:28:00 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	draw_pixel(t_data *data, int i, int j, int color)
 	int	max_y;
 
 	start_x = i;
-	max_x = i + MINIMAP_PIXEL;
-	max_y = j + MINIMAP_PIXEL;
+	max_x = i + SPACE;
+	max_y = j + SPACE;
 	while (j < max_y)
 	{
 		i = start_x;
@@ -49,11 +49,11 @@ void	draw_minimap(t_data *data, t_coor start, t_coor end)
 		while (x < end.x)
 		{
 			if (data->map[start.y][x] == '1')
-				draw_pixel(data, i * MINIMAP_PIXEL + 20, j * MINIMAP_PIXEL + 20, 0xE7E7E7);
+				draw_pixel(data, i * SPACE + 20, j * SPACE + 20, 0xE7E7E7);
 			else
-				draw_pixel(data, i * MINIMAP_PIXEL + 20, j * MINIMAP_PIXEL + 20, 0x000080);
+				draw_pixel(data, i * SPACE + 20, j * SPACE + 20, 0x000080);
 			if (x == (int)data->pos_x && start.y == (int)data->pos_y)
-				draw_pixel(data, i * MINIMAP_PIXEL + 20, j * MINIMAP_PIXEL + 20, 0x00FF0000);
+				draw_pixel(data, i * SPACE + 20, j * SPACE + 20, 0x00FF0000);
 			i++;
 			x++;
 		}
@@ -62,47 +62,54 @@ void	draw_minimap(t_data *data, t_coor start, t_coor end)
 	}
 }
 
+t_minimap	init_minimap(t_data *data, int x, int y)
+{
+	t_minimap	minimap;
+
+	minimap.pos.x = (int)data->pos_x;
+	minimap.pos.y = (int)data->pos_y;
+	minimap.start.x = minimap.pos.x - x;
+	minimap.start.y = minimap.pos.y - y;
+	minimap.end.x = minimap.pos.x + x;
+	minimap.end.y = minimap.pos.y + y;
+	return (minimap);
+}
+
 void	draw_part_of_minimap(t_data *data, int center_x, int center_y)
 {
-	t_coor	start;
-	t_coor	end;
-	t_coor	pos;
+	t_minimap	minimap;
 
-	pos.x = (int)data->pos_x;
-	pos.y = (int)data->pos_y;
-	start.x = pos.x - center_x;
-	start.y = pos.y - center_y;
-	end.x = pos.x + center_x;
-	end.y = pos.y + center_y;
-	if (pos.x < center_x)
+	minimap = init_minimap(data, center_x, center_y);
+	if (minimap.pos.x < center_x)
 	{
-		start.x = 0;
-		end.x = center_x * 2;
+		minimap.start.x = 0;
+		minimap.end.x = center_x * 2;
 	}
-	if (pos.x > data->max_x - center_x)
+	if (minimap.pos.x > data->max_x - center_x)
 	{
-		start.x = data->max_x - center_x * 2;
-		end.x = data->max_x;
+		minimap.start.x = data->max_x - center_x * 2;
+		minimap.end.x = data->max_x;
 	}
-	if (pos.y < center_y)
+	if (minimap.pos.y < center_y)
 	{
-		start.y = 0;
-		end.y = center_y * 2;
+		minimap.start.y = 0;
+		minimap.end.y = center_y * 2;
 	}
-	if (pos.y > data->max_y - center_y)
+	if (minimap.pos.y > data->max_y - center_y)
 	{
-		start.y = data->max_y - center_y * 2;
-		end.y = data->max_y;
+		minimap.start.y = data->max_y - center_y * 2;
+		minimap.end.y = data->max_y;
 	}
-	draw_minimap(data, start, end);
+	draw_minimap(data, minimap.start, minimap.end);
 }
 
 void	update_minimap(t_data *data)
 {
 	t_coor	start;
 	t_coor	end;
-	
-	if (data->max_x * MINIMAP_PIXEL > DISPLAY_X / 10 || data->max_y * MINIMAP_PIXEL > DISPLAY_Y / 5)
+
+	if (data->max_x * SPACE > DISPLAY_X / 10
+		|| data->max_y * SPACE > DISPLAY_Y / 5)
 		draw_part_of_minimap(data, DISPLAY_X / 200, DISPLAY_Y / 100);
 	else
 	{
