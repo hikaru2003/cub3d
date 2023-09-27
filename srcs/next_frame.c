@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/25 20:19:06 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:15:00 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,11 @@ int	next_frame(int keycode, t_data *data)
 		// free data, etc...
 		exit (0);
 	}
-	if (keycode == UP_ARROW || keycode == KEY_W)
+	// if (keycode == UP_ARROW || keycode == KEY_W)
+	if (keycode == KEY_W)
 		go_straight(data);
-	if (keycode == DOWN_ARROW || keycode == KEY_S)
+	// if (keycode == DOWN_ARROW || keycode == KEY_S)
+	if (keycode == KEY_S)
 		go_back(data);
 	if (keycode == KEY_A)
 		go_left(data);

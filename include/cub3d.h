@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/25 20:18:36 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:09:55 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define DISPLAY_Y		600
 # define MIN_WALL_HEIGHT	500
 # define MAX_WALL_HEIGHT	700
+
+# define MINIMAP_PIXEL	10
 
 # define NORTH			270
 # define SOUTH			90
@@ -101,6 +103,12 @@ typedef struct s_status
 	double	angle;
 	double	height_ratio;
 } t_status;
+
+typedef struct s_coor
+{
+	int	x;
+	int	y;
+} t_coor;
 
 
 

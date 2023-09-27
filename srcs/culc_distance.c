@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   culc_distance.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by akazuki           #+#    #+#             */
-/*   Updated: 2023/09/25 20:18:55 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:54:36 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,110 @@ void	step_position(t_data *data, double angle, int x)
 	update_display(data, x, result_data);
 }
 
+void	draw_pixel(t_data *data, int i, int j, int color)
+{
+	int	start_x;
+	int	max_x;
+	int	max_y;
+
+	start_x = i;
+	max_x = i + MINIMAP_PIXEL;
+	max_y = j + MINIMAP_PIXEL;
+	while (j < max_y)
+	{
+		i = start_x;
+		while (i < max_x)
+		{
+			data->display[j][i] = color;
+			i++;
+		}
+		j++;
+	}
+}
+
+void	draw_minimap(t_data *data, t_coor start, t_coor end)
+{
+	int	i;
+	int	j;
+	int	x;
+
+	i = 0;
+	j = 0;
+	x = start.x;
+	while (start.y < end.y)
+	{
+		i = 0;
+		x = start.x;
+		while (x < end.x)
+		{
+			if (data->map[start.y][x] == '1')
+				draw_pixel(data, i * MINIMAP_PIXEL + 20, j * MINIMAP_PIXEL + 20, 0xE7E7E7);
+			else
+				draw_pixel(data, i * MINIMAP_PIXEL + 20, j * MINIMAP_PIXEL + 20, 0x000080);
+			if (x == (int)data->pos_x && start.y == (int)data->pos_y)
+				draw_pixel(data, i * MINIMAP_PIXEL + 20, j * MINIMAP_PIXEL + 20, 0x00FF0000);
+			i++;
+			x++;
+		}
+		j++;
+		start.y++;
+	}
+}
+
+void	draw_part_of_minimap(t_data *data, int center_x, int center_y)
+{
+	t_coor	start;
+	t_coor	end;
+	int	pos_x;
+	int	pos_y;
+
+	pos_x = (int)data->pos_x;
+	pos_y = (int)data->pos_y;
+	start.x = pos_x - center_x;
+	start.y = pos_y - center_y;
+	end.x = pos_x + center_x;
+	end.y = pos_y + center_y;
+	if (pos_x < center_x)
+	{
+		start.x = 0;
+		end.x = center_x * 2;
+	}
+	if (pos_x > data->max_x - center_x)
+	{
+		start.x = data->max_x - center_x * 2;
+		end.x = data->max_x;
+	}
+	if (pos_y < center_y)
+	{
+		start.y = 0;
+		end.y = center_y * 2;
+	}
+	if (pos_y > data->max_y - center_y)
+	{
+		start.y = data->max_y - center_y * 2;
+		end.y = data->max_y;
+	}
+	draw_minimap(data, start, end);
+}
+
+void	update_minimap(t_data *data)
+{
+	t_coor	start;
+	t_coor	end;
+	
+	if (data->max_x * MINIMAP_PIXEL > DISPLAY_X / 10 || data->max_y * MINIMAP_PIXEL > DISPLAY_Y / 5)
+		draw_part_of_minimap(data, DISPLAY_X / 200, DISPLAY_Y / 100);
+	else
+	{
+		start.x = 0;
+		start.y = 0;
+		end.x = data->max_x;
+		end.y = data->max_y;
+		draw_minimap(data, start, end);
+	}
+	
+}
+
 void	culc_distance(t_data *data)
 {
 	double	shift_angle;
@@ -320,4 +424,5 @@ void	culc_distance(t_data *data)
 		start_angle += shift_angle;
 		x++;
 	}
+	update_minimap(data);
 }
