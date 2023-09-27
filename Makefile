@@ -35,7 +35,7 @@ all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
 	# make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
+	$(CC) $(CFLAGS) $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 

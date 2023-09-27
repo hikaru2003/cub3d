@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/27 16:09:55 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/27 19:14:54 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@
 # define EAST_IMG		3
 
 
-# define VIEW_ANGLE		120
-# define VIEW_ANGLE_Y	90
-# define STEP			0.2
+# define VIEW_ANGLE		60
+# define VIEW_ANGLE_Y	40
+# define STEP			0.1
 
-# define ANGLE			30
+# define ANGLE			1
 
 # define ESC			53
 # define UP_ARROW		126

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   next_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/27 17:34:58 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/27 19:04:05 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ void	go_straight(t_data *data)
 	double	step_x;
 	double	step_y;
 
-	step_x = STEP * cos(data->direction * M_PI / 180);
-	step_y = STEP * sin(data->direction * M_PI / 180);
+	step_x = (STEP + 0.2) * cos(data->direction * M_PI / 180);
+	step_y = (STEP + 0.2) * sin(data->direction * M_PI / 180);
 	if (data->map[(int)(data->pos_y + step_y)][(int)(data->pos_x + step_x)] != '1')
 	{
+		step_x = STEP * cos(data->direction * M_PI / 180);
+		step_y = STEP * sin(data->direction * M_PI / 180);
 		data->pos_x += step_x;
 		data->pos_y += step_y;
 	}
@@ -35,10 +37,12 @@ void	go_back(t_data *data)
 	double	step_x;
 	double	step_y;
 
-	step_x = STEP * cos((data->direction + 180) * M_PI / 180);
-	step_y = STEP * sin((data->direction + 180) * M_PI / 180);
+	step_x = (STEP + 0.2) * cos((data->direction + 180) * M_PI / 180);
+	step_y = (STEP + 0.2) * sin((data->direction + 180) * M_PI / 180);
 	if (data->map[(int)(data->pos_y + step_y)][(int)(data->pos_x + step_x)] != '1')
 	{
+		step_x = STEP * cos((data->direction + 180) * M_PI / 180);
+		step_y = STEP * sin((data->direction + 180) * M_PI / 180);
 		data->pos_x += step_x;
 		data->pos_y += step_y;
 	}
@@ -51,10 +55,12 @@ void	go_left(t_data *data)
 	double	step_x;
 	double	step_y;
 
-	step_x = STEP * cos((data->direction - 90) * M_PI / 180);
-	step_y = STEP * sin((data->direction - 90) * M_PI / 180);
+	step_x = (STEP + 0.2) * cos((data->direction - 90) * M_PI / 180);
+	step_y = (STEP + 0.2) * sin((data->direction - 90) * M_PI / 180);
 	if (data->map[(int)(data->pos_y + step_y)][(int)(data->pos_x + step_x)] != '1')
 	{
+		step_x = STEP * cos((data->direction - 90) * M_PI / 180);
+		step_y = STEP * sin((data->direction - 90) * M_PI / 180);
 		data->pos_x += step_x;
 		data->pos_y += step_y;
 	}
@@ -67,10 +73,12 @@ void	go_right(t_data *data)
 	double	step_x;
 	double	step_y;
 
-	step_x = STEP * cos((data->direction + 90) * M_PI / 180);
-	step_y = STEP * sin((data->direction + 90) * M_PI / 180);
+	step_x = (STEP + 0.2) * cos((data->direction + 90) * M_PI / 180);
+	step_y = (STEP + 0.2) * sin((data->direction + 90) * M_PI / 180);
 	if (data->map[(int)(data->pos_y + step_y)][(int)(data->pos_x + step_x)] != '1')
 	{
+		step_x = STEP * cos((data->direction + 90) * M_PI / 180);
+		step_y = STEP * sin((data->direction + 90) * M_PI / 180);
 		data->pos_x += step_x;
 		data->pos_y += step_y;
 	}
