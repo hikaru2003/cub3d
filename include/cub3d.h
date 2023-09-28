@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/27 19:14:54 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:48:06 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@
 
 # define DISPLAY_X		1000
 # define DISPLAY_Y		600
-# define MIN_WALL_HEIGHT	500
-# define MAX_WALL_HEIGHT	700
+# define DISPLAY_HALF	300
 
-# define MINIMAP_PIXEL	10
+# define SPACE	10
 
 # define NORTH			270
 # define SOUTH			90
@@ -91,7 +90,7 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-} t_data;
+}	t_data;
 
 typedef struct s_status
 {
@@ -102,15 +101,30 @@ typedef struct s_status
 	double	pos;
 	double	angle;
 	double	height_ratio;
-} t_status;
+	int		height;
+	float	height_per_pixel;
+}	t_status;
 
 typedef struct s_coor
 {
 	int	x;
 	int	y;
-} t_coor;
+}	t_coor;
+
+typedef struct s_minimap
+{
+	t_coor	pos;
+	t_coor	start;
+	t_coor	end;
+}	t_minimap;
 
 
+// change_dir.c
+void	turn_left(t_data *data);
+void	turn_right(t_data *data);
+
+// check_elements.c
+void	check_elements(int fd, t_data *data);
 
 // check_file.c
 void	check_file(char *filename, t_data *data);
@@ -129,7 +143,12 @@ void	free_map(t_data *data);
 void	free_path(t_data *data);
 int		ft_destroy(t_data *data);
 
+// draw_minimap.c
+void	update_minimap(t_data *data);
+
 // draw.c
+void	reset_display(t_data *data);
+void	update_display(t_data *data, int index, t_status status);
 int		draw_map(t_data *data);
 
 // error.c
@@ -140,12 +159,7 @@ char	*get_next_line(int fd);
 char	*gnl_strjoin(char *line, char *buf);
 char	*ft_free(char **str);
 
-// init_data.c
-t_data	*init_data(void);
-
 // next_frame.c
-void	reset_display(t_data *data);
-void	update_display(t_data *data, int index, t_status status);
 int		next_frame(int keycode, t_data *data);
 
 

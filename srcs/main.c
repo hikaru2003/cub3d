@@ -6,11 +6,31 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/27 20:30:15 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:47:25 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static t_data	*init_data(void)
+{
+	t_data	*data;
+
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		print_error("bad_alloc");
+	data->direction = -1;
+	data->max_x = 0;
+	data->max_y = 0;
+	data->pos_x = 0;
+	data->pos_y = 0;
+	data->xpm_width = 0;
+	data->xpm_height = 0;
+	data->path = (char **)malloc(sizeof(char *) * 4);
+	if (!data->path)
+		print_error("bad_alloc");
+	return (data);
+}
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:10:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/24 15:00:42 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:37:49 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,9 @@ void	free_map(t_data *data)
 	while (i <= data->max_y)
 	{
 		free(data->map[i]);
-		// if (data->map[i])
-		// {
-		// 	printf("i = %d\n", i);
-		// }
 		i++;
 	}
-	printf("before\n");
 	free(data->map);
-	printf("after\n");
-	if (data->map == NULL)
-		printf("map is freed\n");
 }
 
 void	free_path(t_data *data)

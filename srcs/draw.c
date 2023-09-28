@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:17:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:33:50 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:44:31 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	update_display(t_data *data, int index, t_status status)
 		if (0 <= j && j < DISPLAY_Y)
 			data->display[j][index] = *(unsigned int *)(mlx_data_addr + pos);
 		j++;
-		while (((j - DISPLAY_HALF + status.height) / status.height_per_pixel) > current_pixel + 1 && cor.y < data->xpm_height)
+		while (((j - DISPLAY_HALF + status.height) / status.height_per_pixel)
+			> current_pixel + 1 && cor.y < data->xpm_height)
 		{
 			current_pixel++;
 			cor.y++;

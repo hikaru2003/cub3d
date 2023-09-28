@@ -7,5 +7,17 @@
     ],
     "codam-norminette-3.highlight-color": "rgba(255, 0, 0, 0.2)", // highlight norm errors in custom color. Can be in rgba, hex, or vscode.ThemeColor format.
 	"codam-norminette-3.displayErrorName": true,
-	"git.openRepositoryInParentFolders": "never", // display name of error on hover
+	"git.openRepositoryInParentFolders": "never",
+	"files.associations": {
+		"__bit_reference": "c",
+		"__hash_table": "c",
+		"__split_buffer": "c",
+		"array": "c",
+		"initializer_list": "c",
+		"ios": "c",
+		"string": "c",
+		"string_view": "c",
+		"unordered_map": "c",
+		"vector": "c"
+	}, // display name of error on hover
 }

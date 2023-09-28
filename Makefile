@@ -1,17 +1,19 @@
 NAME = cub3d
 
-SRCS	=	check_file.c	\
-			check_map.c	\
-			create_map.c	\
-			culc_distance.c	\
-			destroy.c		\
-			draw.c			\
-			error.c			\
+SRCS	=	change_dir.c			\
+			check_elements.c		\
+			check_file.c			\
+			check_map.c				\
+			create_map.c			\
+			culc_distance.c			\
+			destroy.c				\
+			draw_minimap.c			\
+			draw.c					\
+			error.c					\
 			get_next_line_utils.c	\
-			get_next_line.c	\
-			init_data.c		\
-			main.c			\
-			next_frame.c	\
+			get_next_line.c			\
+			main.c					\
+			next_frame.c			\
 
 INCLUDE_DIR = ./include
 SRCDIR = ./srcs/
@@ -35,7 +37,7 @@ all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
 	# make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
+	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 

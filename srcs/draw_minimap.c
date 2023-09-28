@@ -6,13 +6,13 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:36:12 by hmorisak          #+#    #+#             */
-/*   Updated: 2023/09/27 20:28:00 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:46:18 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	draw_pixel(t_data *data, int i, int j, int color)
+static void	draw_pixel(t_data *data, int i, int j, int color)
 {
 	int	start_x;
 	int	max_x;
@@ -33,7 +33,7 @@ void	draw_pixel(t_data *data, int i, int j, int color)
 	}
 }
 
-void	draw_minimap(t_data *data, t_coor start, t_coor end)
+static void	draw_minimap(t_data *data, t_coor start, t_coor end)
 {
 	int	i;
 	int	j;
@@ -62,7 +62,7 @@ void	draw_minimap(t_data *data, t_coor start, t_coor end)
 	}
 }
 
-t_minimap	init_minimap(t_data *data, int x, int y)
+static t_minimap	init_minimap(t_data *data, int x, int y)
 {
 	t_minimap	minimap;
 
@@ -75,7 +75,7 @@ t_minimap	init_minimap(t_data *data, int x, int y)
 	return (minimap);
 }
 
-void	draw_part_of_minimap(t_data *data, int center_x, int center_y)
+static void	draw_part_of_minimap(t_data *data, int center_x, int center_y)
 {
 	t_minimap	minimap;
 

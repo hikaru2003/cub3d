@@ -6,13 +6,13 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/27 19:56:53 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/28 11:45:48 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	init_map(t_data *data)
+static void	init_map(t_data *data)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ void	init_map(t_data *data)
 	data->map[j] = NULL;
 }
 
-void	skip_elements(t_data *data, int fd)
+static void	skip_elements(t_data *data, int fd)
 {
 	int		i;
 	char	*line;
@@ -48,7 +48,7 @@ void	skip_elements(t_data *data, int fd)
 	}
 }
 
-void	check_direction(t_data *data, char c, int x, int y)
+static void	check_direction(t_data *data, char c, int x, int y)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
@@ -67,7 +67,7 @@ void	check_direction(t_data *data, char c, int x, int y)
 	}
 }
 
-void	get_map(int fd, t_data *data)
+static void	get_map(int fd, t_data *data)
 {
 	int		i;
 	int		j;
