@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:01:19 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:43:37 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 23:42:55 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,7 @@ static void	go_right(t_data *data)
 int	next_frame(int keycode, t_data *data)
 {
 	if (keycode == ESC)
-	{
 		ft_destroy(data);
-		// free data, etc...
-		exit (0);
-	}
 	if (keycode == KEY_W)
 		go_straight(data);
 	if (keycode == KEY_S)
