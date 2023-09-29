@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:10:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:37:49 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 19:08:51 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,6 @@ void	free_map(t_data *data)
 		i++;
 	}
 	free(data->map);
-}
-
-void	free_path(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	if (!data->path)
-		return ;
-	while (i < 4)
-	{
-		if (data->path[i])
-			free(data->path[i]);
-		i++;
-	}
-	free(data->path);
 }
 
 int	ft_destroy(t_data *data)

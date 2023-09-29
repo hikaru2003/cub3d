@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:47:25 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 22:58:27 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ static t_data	*init_data(void)
 	data->pos_y = 0;
 	data->xpm_width = 0;
 	data->xpm_height = 0;
-	data->path = (char **)malloc(sizeof(char *) * 4);
-	if (!data->path)
-		print_error("bad_alloc");
+	data->floor_rgb = -1;
+	data->ceiling_rgb = -1;
+	data->path[0] = false;
+	data->path[1] = false;
+	data->path[2] = false;
+	data->path[3] = false;
+	data->map_start_line = 0;
 	return (data);
 }
 
@@ -56,7 +60,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// __attribute__((destructor))
-// static void	destructor(void){
-// 	system("leaks -q cub3d");
-// }
+__attribute__((destructor))
+static void	destructor(void){
+	system("leaks -q cub3D");
+}

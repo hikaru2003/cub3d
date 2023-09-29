@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:45:48 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 23:03:00 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static void	init_map(t_data *data)
 {
-	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
 	data->map = (char **)malloc(sizeof(char *) * (data->max_y + 1));
 	if (!data->map)
@@ -40,7 +38,7 @@ static void	skip_elements(t_data *data, int fd)
 	char	*line;
 
 	i = 0;
-	while (i < 8)
+	while (i < data->map_start_line)
 	{
 		line = get_next_line(fd);
 		free(line);
