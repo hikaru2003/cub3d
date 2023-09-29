@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:50:44 by hmorisak          #+#    #+#             */
-/*   Updated: 2023/04/10 15:11:12 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:03:03 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define LIBFT_H
 
 # include <libc.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <stddef.h>
-// #include <stdint.h>
-// #include <limits.h>
-// #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <limits.h>
+#include <unistd.h>
 
 typedef struct s_list
 {
@@ -51,6 +51,7 @@ void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	**split_free(char **array);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

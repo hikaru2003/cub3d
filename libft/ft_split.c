@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:55:41 by hmorisak          #+#    #+#             */
-/*   Updated: 2023/04/29 19:37:53 by hmorisak         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:02:46 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_free(char **array)
+char	**split_free(char **array)
 {
 	int	i;
 
@@ -64,7 +64,7 @@ char	**split_to_array(char const *s, char c, char **array)
 				i++;
 			array[x] = ft_strncpy(s, start, (size_t)(i - start));
 			if (!array[x])
-				return (ft_free(array));
+				return (split_free(array));
 			x++;
 		}
 	}

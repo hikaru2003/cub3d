@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:48:06 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 23:01:57 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <libc.h>
 # include <mlx.h>
 # include <math.h>
-#include <stdio.h>
-#include <time.h>
+# include <stdio.h>
+# include <stdbool.h>
+# include <time.h>
 # include "../libft/libft.h"
 
 # define KEY_ESC		65307
@@ -73,15 +74,12 @@ typedef struct s_data
 	double	pos_y;
 	int		max_x;
 	int		max_y;
-	char	**path;
 	void	*img;
 	int		xpm_width;
 	int		xpm_height;
 	void	*direction_img[4];
-	void	*north_img;
-	void	*south_img;
-	void	*west_img;
-	void	*east_img;
+	bool	path[4];
+	int		map_start_line;
 	int		floor_rgb;
 	int		ceiling_rgb;
 	void	*mlx;

@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 
 SRCS	=	change_dir.c			\
 			check_elements.c		\
@@ -28,8 +28,8 @@ OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 
 CC = gcc
 
-# CFLAGS = -Wall -Wextra -Werror -I include
-CFLAGS = -I include #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -I include
+# CFLAGS = -I include #-g -fsanitize=address
 
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 
