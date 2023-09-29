@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/29 23:03:00 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 23:35:15 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_map(t_data *data)
 		data->map[j] = (char *)malloc(sizeof(char) * (data->max_x + 1));
 		if (!data->map[j])
 			print_error("bad_alloc");
-		data->map[j] = ft_memset(data->map[j], '1', (size_t)data->max_x);
+		data->map[j] = ft_memset(data->map[j], ' ', (size_t)data->max_x);
 		data->map[j][data->max_x] = '\0';
 		j++;
 	}
@@ -81,8 +81,6 @@ static void	get_map(int fd, t_data *data)
 		{
 			check_direction(data, line[i], i, j);
 			data->map[j][i] = line[i];
-			if (line[i] == ' ')
-				data->map[j][i] = '1';
 			i++;
 		}
 		free(line);
@@ -98,5 +96,7 @@ void	create_map(char *filename, t_data *data)
 	init_map(data);
 	skip_elements(data, fd);
 	get_map(fd, data);
+	if (data->pos_x == 0 && data->pos_y == 0)
+		print_error("no player position");
 	close (fd);
 }

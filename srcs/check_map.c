@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:37:31 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:42:36 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/29 23:37:33 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,26 @@ static void	is_surrounded_by_wall(t_data *data, int i, int j)
 		print_error("map is not closed");
 }
 
+static void	update_map(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (j < data->max_y)
+	{
+		i = 0;
+		while (i < data->max_x)
+		{
+			if (data->map[j][i] == ' ')
+				data->map[j][i] = '1';
+			i++;
+		}
+		j++;
+	}
+}
+
 void	check_map(t_data *data)
 {
 	int	i;
@@ -96,4 +116,5 @@ void	check_map(t_data *data)
 		}
 		j++;
 	}
+	update_map(data);
 }
