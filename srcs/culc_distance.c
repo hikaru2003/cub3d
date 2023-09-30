@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by akazuki           #+#    #+#             */
-/*   Updated: 2023/09/29 23:03:35 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:49:53 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,7 @@ void	step_position(t_data *data, double angle, int x)
 	result_data.height_ratio = atan(0.5 / result_data.distance) / M_PI * 180 / (double)VIEW_ANGLE_Y * (double) 2;
 	result_data.height	= (int)DISPLAY_HALF * result_data.height_ratio;
 	result_data.height_per_pixel = (float)result_data.height / (float)(data->xpm_height / 2);
+	// printf("angle: %f\nratio: %f, height: %d, perpixel: %f\n", angle, result_data.height_ratio, result_data.height, result_data.height_per_pixel);
 	update_display(data, x, result_data);
 }
 

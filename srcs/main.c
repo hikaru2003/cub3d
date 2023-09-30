@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:44:54 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/29 22:58:27 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:45:09 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static t_data	*init_data(void)
 	if (!data)
 		print_error("bad_alloc");
 	data->direction = -1;
-	data->max_x = 0;
-	data->max_y = 0;
 	data->pos_x = 0;
 	data->pos_y = 0;
+	data->max_x = 0;
+	data->max_y = 0;
 	data->xpm_width = 0;
 	data->xpm_height = 0;
 	data->floor_rgb = -1;

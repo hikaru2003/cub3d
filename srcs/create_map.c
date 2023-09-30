@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 12:38:58 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/29 23:35:15 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:46:58 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ static void	get_map(int fd, t_data *data)
 	while (j < data->max_y)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			print_error("no map");
 		i = 0;
 		while (line[i] != '\n' && line[i] != '\0')
 		{

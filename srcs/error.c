@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:58:28 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/21 12:29:49 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 13:07:11 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	print_error(char *msg)
 {
-	printf("Error: %s\n", msg);
+	printf("Error\n%s\n", msg);
 	exit (1);
 }

@@ -6,7 +6,7 @@
 /*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/29 23:01:57 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 14:38:54 by hikaru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_data
 	double	pos_y;
 	int		max_x;
 	int		max_y;
-	void	*img;
 	int		xpm_width;
 	int		xpm_height;
 	void	*direction_img[4];
@@ -82,6 +81,7 @@ typedef struct s_data
 	int		map_start_line;
 	int		floor_rgb;
 	int		ceiling_rgb;
+	void	*img;
 	void	*mlx;
 	void	*win;
 	char	*addr;
