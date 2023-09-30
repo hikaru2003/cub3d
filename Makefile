@@ -14,6 +14,10 @@ SRCS	=	change_dir.c			\
 			get_next_line.c			\
 			main.c					\
 			next_frame.c			\
+			check_distance.c		\
+			set_culc_data.c			\
+			choice_distance.c		\
+			angle_multiple_ninety.c	\
 
 INCLUDE_DIR = ./include
 SRCDIR = ./srcs/
@@ -26,10 +30,9 @@ LIBFT_A = $(LIBFT_DIR)libft.a
 
 OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -I include
-# CFLAGS = -I include #-g -fsanitize=address
 
 MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
 
@@ -37,7 +40,7 @@ all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
 	# make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -Lmlx $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
+	$(CC) $(CFLAGS) $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 

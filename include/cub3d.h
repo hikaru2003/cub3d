@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akazuki <akazuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:21 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/30 14:38:54 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 17:17:45 by akazuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,23 @@ char	*ft_free(char **str);
 // next_frame.c
 int		next_frame(int keycode, t_data *data);
 
+// check_distance.c
+char	check_map_x_axis(t_data *data, double x, double y, double angle);
+char	check_map_y_axis(t_data *data, double x, double y, double angle);
+int		init_check(t_status data_init, t_data *data);
+
+//set_culc_data.c
+double	set_delta_x(double angle);
+double	set_delta_y(double angle);
+t_status	set_init_data_x_axis(t_data *data, double angle);
+t_status	set_init_data_y_axis(t_data *data, double angle);
+double	set_culc_distance(t_status data_init, t_data *data, double angle);
+
+//choice_distance.c
+t_status	choice_distance(t_data *data, double angle);
+
+//angle_multiple_ninety.c
+t_status	multiple_parallel_intersection(t_data *data, double angle);
+t_status	multiple_vertical_intersection(t_data *data, double angle);
 
 #endif
