@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   culc_distance.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akazuki <akazuki@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 21:34:56 by akazuki           #+#    #+#             */
-/*   Updated: 2023/09/30 16:57:50 by akazuki          ###   ########.fr       */
+/*   Updated: 2023/09/30 17:28:43 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	culc_distance(t_data *data)
 			start_angle = start_angle - (double)360;
 		else if (start_angle < (double)0)
 			start_angle = start_angle + (double)360;
-		printf("angle %f\n", start_angle);
 		step_position(data, start_angle, x);
 		start_angle += shift_angle;
 		x++;

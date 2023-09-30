@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hikaru <hikaru@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hmorisak <hmorisak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 18:17:00 by hikaru            #+#    #+#             */
-/*   Updated: 2023/09/28 11:44:31 by hikaru           ###   ########.fr       */
+/*   Updated: 2023/09/30 17:27:09 by hmorisak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ void	reset_display(t_data *data)
 		y++;
 	}
 }
-
-// result_data.height_ratio = atan(0.5 / result_data.distance) / M_PI * 180 / (double)VIEW_ANGLE_Y * (double) 2;
-// result_data.height	= (int)DISPLAY_HALF * result_data.height_ratio;
-// result_data.height_per_pixel = (float)result_data.height / (float)(data->xpm_height / 2);
 
 void	update_display(t_data *data, int index, t_status status)
 {
