@@ -32,15 +32,15 @@ OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I include
+CFLAGS = -Wall -Wextra -Werror -I include -I mlx
 
-MLX_FLAG = -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
 	# make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $(MLX_FLAG) -o $(NAME) $(LIBFT_A) $(OBJS)
+	$(CC) $(CFLAGS) $(MLX_FLAG ) $(LIBFT_A) $(OBJS) -o $(NAME)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
