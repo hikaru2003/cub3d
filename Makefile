@@ -26,8 +26,7 @@ OBJDIR = ./obj/
 MLX_DIR = ./mlx/
 
 LIBFT_DIR = ./libft/
-# LIBFT_A = $(LIBFT_DIR)libft.a
-LIBFT_A = $(shell echo libft/obj/*.o)
+LIBFT_A = $(LIBFT_DIR)libft.a
 
 OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 
@@ -40,7 +39,7 @@ MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
-	# make -C $(MLX_DIR)
+	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE_DIR) $(MLX_FLAG) $(LIBFT_A) $(OBJS) -o $(NAME)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
@@ -52,7 +51,7 @@ $(LIBFT_A):
 	make -C $(LIBFT_DIR)
 
 clean:
-	# make clean -C $(MLX_DIR)
+	make clean -C $(MLX_DIR)
 	make fclean -C $(LIBFT_DIR)
 	rm -rf $(OBJDIR)
 
