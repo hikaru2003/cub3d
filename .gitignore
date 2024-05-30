@@ -1,3 +1,4 @@
 cub3D
 obj/
-libft/libft.a
+*.a
+*.o
