@@ -19,20 +19,21 @@ SRCS	=	change_dir.c			\
 			choice_distance.c		\
 			angle_multiple_ninety.c	\
 
-INCLUDE_DIR = ./include
+INCLUDE_DIR = -I ./include -I ./libft -I ./mlx
 SRCDIR = ./srcs/
 OBJDIR = ./obj/
 
 MLX_DIR = ./mlx/
 
 LIBFT_DIR = ./libft/
-LIBFT_A = $(LIBFT_DIR)libft.a
+# LIBFT_A = $(LIBFT_DIR)libft.a
+LIBFT_A = $(shell echo libft/obj/*.o)
 
 OBJS = $(SRCS:%.c=$(OBJDIR)%.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -I include -I mlx
+CFLAGS = -Wall -Wextra -Werror -I include -I mlx -I libft
 
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
@@ -40,12 +41,12 @@ all: $(LIBFT_A) $(OBJDIR) $(NAME)
 
 $(NAME): $(MLX_DIR) $(LIBFT_A) $(OBJDIR) $(OBJS)
 	# make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $(MLX_FLAG ) $(LIBFT_A) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE_DIR) $(MLX_FLAG) $(LIBFT_A) $(OBJS) -o $(NAME)
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o: $(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INCLUDE_DIR) -c -o $@ $<
 
 $(LIBFT_A):
 	make -C $(LIBFT_DIR)
